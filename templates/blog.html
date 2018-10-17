@@ -87,10 +87,10 @@
             <a href="">
                 <h3>{{ article.title }}</h3>
             </a>
-            {{ article.created_At }}
+            {{ article.pretty_date }}
             <br>
             <img src="{{ article.image.url }}" class="img-fluid" height="200px" width="200px">
-            <p>{{ article.content}}</p>
+            <p>{{ article.summary}}...</p>
             {% endfor %}
         </div>
     </main>
