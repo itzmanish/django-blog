@@ -1,0 +1,15 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+<div class="container">
+    <div class="article-details">
+        <div class="article">
+            <br>
+            <h2>{{ article.title }}</h2>
+            <h6>{{ article.pretty_date }}</h6>
+            <br>
+            <img src="{{ article.image.url }}" alt="" class="image-fluid" height="400px" width="1140px">
+            <p>{{ article.content }}</p>
+        </div>
+    </div>
+</div>
+{% endblock%}
