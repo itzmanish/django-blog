@@ -28,10 +28,10 @@
 }
 
 footer {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 footer p {
-  margin-bottom: .25rem;
+  margin-bottom: 0.25rem;
 }

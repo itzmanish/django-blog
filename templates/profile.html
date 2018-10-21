@@ -1,0 +1,35 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+<br>
+<br>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Profile</div>
+                <div class="card-body">
+                    {% if user.is_authenticated %}
+                    <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+                    <p>Username: {{ user.username }}</p>
+                    <p>Email: {{ user.email }}</p>
+                    {% endif %}
+                    <a href="{% url 'profiles:edit_profile' %}">
+                        <button class="btn btn-secondary">
+                            Edit Profile
+                        </button>
+                    </a>
+                    <a href="{% url 'profiles:password_update' %}">
+                        <button class="btn btn-secondary">
+                            Change Password
+                        </button>
+                    </a>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
