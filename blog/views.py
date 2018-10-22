@@ -4,8 +4,12 @@ from .models import Article
 
 
 def blog(request):
-    articles = Article.objects.all()
-    return render(request, 'blog.html', {'articles': articles})
+    if request.user.is_authenticated:
+        articles = Article.objects.all()
+        context = {'articles': articles}
+        return render(request, 'blog.html', context)
+
+    return render(request, 'blog.html',)
 
 
 def details(request, slug):

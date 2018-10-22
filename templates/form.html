@@ -1,0 +1,33 @@
+{% load form_tags widget_tweaks %}
+
+{% if form.errors %}
+<div class="container">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 20px;">
+        {% for field in form %}
+        {% if field.errors %}
+        {{ field.errors }}
+        {% endif %}
+        {% endfor %}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+
+{% endif %}
+
+
+{% for field in form %}
+<div class="form-group row">
+    <label class="col-md-4 col-form-label text-md-right"> {{ field.label_tag }}</label>
+    <div class="col-md-6">
+        {% render_field field class=field|input_class %}
+        {% if field.help_text %}
+        <small class="form-text text-muted">
+            {{ field.help_text|safe }}
+        </small>
+        {% endif %}
+    </div>
+
+</div>
+{% endfor %}

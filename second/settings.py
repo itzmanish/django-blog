@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'jobs.apps.JobsConfig',
     'profiles.apps.ProfilesConfig',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -84,8 +85,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'second',
-        'USER': '',
-        'PASSWORD': '',
+        'USER': 'krishna',
+        'PASSWORD': 'krishna@108',
         'PORT': '5432',
         'HOST': 'localhost',
     }
@@ -137,3 +138,8 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
+
+
+# Password reset email form
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")

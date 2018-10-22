@@ -11,9 +11,6 @@
     <meta name="author" content="">
     <link rel="icon" href="https://getbootstrap.com/favicon.ico">
 
-    <title>Portfolio</title>
-
-
     <!-- Bootstrap core CSS -->
     <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
 
@@ -71,10 +68,13 @@
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'profiles:dashboard' %}">My Account</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'profiles:logout_user' %}">Logout</a>
+                            <div class="dropdown nav-link" style="cursor: context-menu;">
+                                {{ user.username }}
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="nav-link" href="{% url 'profiles:dashboard' %}">Profile</a>
+                                    <a class="nav-link" href="{% url 'profiles:logout_user' %}">Logout</a>
+                                </div>
+                            </div>
                         </li>
                         {% else %}
                         <li class="nav-item">
@@ -89,7 +89,6 @@
     </header>
 
     <main role="main">
-
         {% if messages %}
         {% for message in messages %}
         <div class="container">
@@ -105,20 +104,16 @@
 
         {% block content %}
         {% endblock %}
-
     </main>
 
-    <footer class="text-muted">
-        <div class="container">
-            <p class="float-right">
-                <a href="">Back to top</a>
+    <footer class="text-muted fixed-bottom">
+
+        <div class="text-center">
+            <p>
+                Copyright All Rights Reserved {% now "Y" %}
             </p>
-            <div class="text-center">
-                <p>
-                    Copyright All Rights Reserved {% now "Y" %}
-                </p>
-            </div>
         </div>
+
     </footer>
 
     <!-- Bootstrap core JavaScript

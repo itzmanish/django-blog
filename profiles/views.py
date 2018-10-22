@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
-from django.contrib.auth.views import PasswordChangeForm
+from django.contrib.auth.views import PasswordChangeForm, PasswordResetForm, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetConfirmView
 from django.contrib import messages
 from .forms import SignUpForm, EditProfileForm
 
