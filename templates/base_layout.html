@@ -68,7 +68,7 @@
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <div class="dropdown nav-link" style="cursor: context-menu;">
+                            <div class="dropdown nav-link" style="cursor: default;">
                                 {{ user.username }}
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="nav-link" href="{% url 'profiles:dashboard' %}">Profile</a>
