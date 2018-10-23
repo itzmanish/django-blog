@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
+from decouple import config, Csv
+
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -23,13 +25,12 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates/')
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'v@cucuxe9&^vce-0=yh9@2^%4p3n$g95$48*zvwy1lmt&2u@&p'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 # Application definition
 
@@ -86,9 +87,9 @@ WSGI_APPLICATION = 'second.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'second',
-        'USER': 'krishna',
-        'PASSWORD': 'krishna@108',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
         'PORT': '5432',
         'HOST': 'localhost',
     }
@@ -143,5 +144,15 @@ MEDIA_URL = '/media/'
 
 
 # Password reset email form
-EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+
+EMAIL_BACKEND = config(
+    'EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
+EMAIL_HOST = config('EMAIL_HOST', default='')
+EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
+
+DEFAULT_FROM_EMAIL = 'Django Maharudra <noreply@maharudra.me>'
+EMAIL_SUBJECT_PREFIX = '[Django Maharudra] '
