@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'jobs.apps.JobsConfig',
     'profiles.apps.ProfilesConfig',
     'widget_tweaks',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
