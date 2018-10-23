@@ -14,6 +14,9 @@ See Demo at [maharudra.me](https://maharudra.me)
 git clone https://github.com/itzmanish/blog
 cd blog
 pip install -r requirements.txt
+pip install python-decouple
+pip install django-widget-tweaks
+pip install django-debug-toolbar
 cd second
 python manage.py createsuperuser
 python manage.py makemigrations
