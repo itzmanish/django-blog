@@ -1,4 +1,4 @@
-# Blog-second_project
+# Blog Second_project
 
 My second project on django
 
